@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GEMOTION Academy — Športová škola Miloša a Inga</title>
+<meta name="description" content="GEMOTION Academy — systematický program všeobecnej športovej prípravy pre deti vo veku 6 až 11 rokov v regióne Rožňava." />
+<link rel="icon" type="image/png" href="gemotion%20icona.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#1D40A8;
+    --blue-dark:#16307E;
+    --blue-soft:#E8EEFA;
+    --red:#D41E2C;
+    --red-dark:#A5121E;
+    --ink:#0F172A;
+    --ink-2:#334155;
+    --muted:#64748B;
+    --paper:#FFFFFF;
+    --cream:#FAF7F2;
+    --border:#E5E7EB;
+    --radius:22px;
+    --radius-lg:28px;
+    --shadow-sm:0 2px 8px rgba(15,23,42,.06);
+    --shadow-md:0 10px 30px rgba(15,23,42,.08);
+    --shadow-lg:0 24px 60px rgba(15,23,42,.14);
+    --maxw:1200px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Archivo',sans-serif;line-height:1.1;letter-spacing:-.02em;margin:0 0 .5em;color:var(--ink)}
+  h1{font-weight:900}
+  h2{font-weight:800}
+  h3{font-weight:700}
+  p{margin:0 0 1em;color:var(--ink-2)}
+  a{color:var(--blue);text-decoration:none}
+  img{max-width:100%;display:block}
+  .container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Archivo',sans-serif;font-weight:700;
+    font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--blue);
+    padding:8px 14px;border-radius:999px;
+    background:var(--blue-soft);
+  }
+  .eyebrow.red{color:var(--red);background:#FCE7E9}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 26px;border-radius:999px;
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;
+    letter-spacing:.02em;text-transform:uppercase;
+    transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+    cursor:pointer;border:0;
+  }
+  .btn-primary{background:var(--red);color:#fff;box-shadow:0 10px 24px rgba(212,30,44,.28)}
+  .btn-primary:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 14px 32px rgba(212,30,44,.34)}
+  .btn-ghost{background:#fff;color:var(--blue);border:2px solid var(--blue)}
+  .btn-ghost:hover{background:var(--blue);color:#fff}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.88);
+    backdrop-filter:saturate(180%) blur(14px);
+    -webkit-backdrop-filter:saturate(180%) blur(14px);
+    border-bottom:1px solid rgba(15,23,42,.06);
+  }
+  .nav-inner{
+    max-width:var(--maxw);margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+  }
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{height:44px;width:auto}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{
+    color:var(--ink);font-weight:600;font-size:14.5px;
+    position:relative;
+  }
+  .nav-links a:hover{color:var(--blue)}
+  .nav-cta{display:flex;align-items:center;gap:12px}
+  .menu-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px}
+  .menu-toggle span{display:block;width:26px;height:3px;background:var(--ink);margin:5px 0;border-radius:2px;transition:.3s}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(1200px 600px at 85% 10%, rgba(29,64,168,.08), transparent 60%),
+      radial-gradient(900px 500px at 10% 90%, rgba(212,30,44,.07), transparent 60%),
+      linear-gradient(180deg,#FBFBFD 0%, #F4F6FB 100%);
+    padding:80px 0 100px;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.1fr 1fr;gap:70px;align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(40px,6vw,72px);
+    margin-bottom:20px;
+  }
+  .hero h1 .accent-blue{color:var(--blue)}
+  .hero h1 .accent-red{color:var(--red)}
+  .hero-lead{
+    font-size:19px;color:var(--ink-2);
+    max-width:540px;margin-bottom:34px;
+  }
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:40px}
+  .hero-stats{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+    max-width:540px;
+  }
+  .stat{
+    background:#fff;border:1px solid var(--border);
+    border-radius:18px;padding:18px 20px;
+    box-shadow:var(--shadow-sm);
+  }
+  .stat-num{
+    font-family:'Archivo',sans-serif;font-weight:900;
+    font-size:28px;color:var(--blue);line-height:1;
+  }
+  .stat-num.red{color:var(--red)}
+  .stat-label{font-size:13px;color:var(--muted);margin-top:6px;font-weight:500}
+
+  .hero-visual{position:relative}
+  .hero-photo{
+    border-radius:var(--radius-lg);
+    aspect-ratio:4/5;
+    width:100%;
+    object-fit:cover;
+    box-shadow:var(--shadow-lg);
+    transform:rotate(1.5deg);
+  }
+  .hero-blob-1,.hero-blob-2{
+    position:absolute;border-radius:50%;z-index:-1;filter:blur(40px);
+  }
+  .hero-blob-1{width:260px;height:260px;background:rgba(29,64,168,.18);top:-20px;left:-30px}
+  .hero-blob-2{width:300px;height:300px;background:rgba(212,30,44,.16);bottom:-40px;right:-20px}
+  .hero-badge{
+    position:absolute;bottom:20px;left:-30px;
+    background:#fff;border-radius:18px;padding:14px 18px;
+    box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:12px;
+    transform:rotate(-2deg);
+  }
+  .hero-badge img{width:44px;height:44px}
+  .hero-badge strong{font-family:'Archivo',sans-serif;font-weight:800;color:var(--ink);display:block;font-size:15px}
+  .hero-badge span{font-size:12.5px;color:var(--muted)}
+
+  /* ---------- SECTIONS ---------- */
+  section.block{padding:110px 0}
+  section.block.alt{background:var(--cream)}
+  .section-head{max-width:780px;margin-bottom:60px}
+  .section-head h2{
+    font-size:clamp(32px,4vw,52px);
+    margin-top:18px;
+  }
+  .section-head .kicker{
+    display:block;color:var(--red);font-family:'Archivo',sans-serif;
+    font-weight:800;font-style:italic;font-size:18px;margin-top:10px;
+    letter-spacing:-.01em;
+  }
+
+  /* Why section */
+  .why-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:70px;align-items:center}
+  .why-grid img{
+    border-radius:var(--radius-lg);
+    aspect-ratio:4/3;object-fit:cover;width:100%;
+    box-shadow:var(--shadow-md);
+  }
+  .why-text p{font-size:16.5px}
+
+  /* Values */
+  .values-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  }
+  .value-card{
+    background:#fff;border:1px solid var(--border);
+    border-radius:var(--radius);padding:32px 28px;
+    transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+    position:relative;overflow:hidden;
+  }
+  .value-card::before{
+    content:"";position:absolute;inset:auto auto 0 0;
+    width:100%;height:4px;background:var(--blue);
+    transform:scaleX(0);transform-origin:left;transition:transform .3s ease;
+  }
+  .value-card:nth-child(even)::before{background:var(--red)}
+  .value-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:transparent}
+  .value-card:hover::before{transform:scaleX(1)}
+  .value-num{
+    font-family:'Archivo',sans-serif;font-weight:900;font-size:14px;
+    color:var(--blue);letter-spacing:.18em;
+  }
+  .value-card:nth-child(even) .value-num{color:var(--red)}
+  .value-card h3{font-size:22px;margin:12px 0 10px}
+  .value-card p{font-size:15px;margin:0}
+
+  /* Mission */
+  .mission-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:70px;align-items:center}
+  .mission-visual{position:relative}
+  .mission-visual img{
+    border-radius:var(--radius-lg);aspect-ratio:4/5;object-fit:cover;width:100%;
+    box-shadow:var(--shadow-lg);
+  }
+  .mission-quote{
+    position:absolute;right:-18px;bottom:30px;
+    background:var(--blue);color:#fff;
+    padding:22px 26px;border-radius:18px;max-width:290px;
+    box-shadow:var(--shadow-lg);
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:17px;line-height:1.35;
+  }
+  .mission-quote::before{
+    content:"";position:absolute;top:-14px;left:30px;
+    border-left:14px solid transparent;border-right:14px solid transparent;
+    border-bottom:14px solid var(--blue);
+  }
+
+  /* How it works */
+  .how-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:70px;align-items:center}
+  .how-visual{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .how-visual img{border-radius:var(--radius);object-fit:cover;width:100%;box-shadow:var(--shadow-md)}
+  .how-visual img:first-child{aspect-ratio:3/4;margin-top:30px}
+  .how-visual img:last-child{aspect-ratio:3/4}
+  .skills-list{
+    margin-top:22px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
+  }
+  .skill-pill{
+    display:flex;align-items:center;gap:12px;
+    background:#fff;border:1px solid var(--border);
+    padding:14px 18px;border-radius:14px;
+    font-weight:600;color:var(--ink);font-size:15px;
+  }
+  .skill-pill .dot{
+    width:10px;height:10px;border-radius:50%;background:var(--red);flex-shrink:0;
+  }
+  .skill-pill:nth-child(even) .dot{background:var(--blue)}
+
+  /* Results */
+  .results-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:70px;align-items:center}
+  .results-grid img{
+    border-radius:var(--radius-lg);aspect-ratio:4/3;object-fit:cover;width:100%;
+    box-shadow:var(--shadow-md);
+  }
+
+  /* Community */
+  .community-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:70px;align-items:center}
+  .community-grid .community-main{
+    border-radius:var(--radius-lg);aspect-ratio:4/3;object-fit:cover;width:100%;
+    box-shadow:var(--shadow-lg);
+  }
+  .camps-banner{
+    margin-top:80px;
+    background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%);
+    border-radius:var(--radius-lg);color:#fff;
+    padding:60px;position:relative;overflow:hidden;
+  }
+  .camps-banner::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(400px 400px at 90% 10%, rgba(212,30,44,.3), transparent 60%),
+      radial-gradient(500px 500px at 10% 100%, rgba(255,255,255,.08), transparent 60%);
+    pointer-events:none;
+  }
+  .camps-grid{
+    display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:center;
+    position:relative;
+  }
+  .camps-banner h3{color:#fff;font-size:36px;margin-bottom:16px}
+  .camps-banner p{color:rgba(255,255,255,.88);font-size:16px}
+  .camps-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .camps-photos img{
+    border-radius:18px;aspect-ratio:1/1;object-fit:cover;width:100%;
+    border:3px solid rgba(255,255,255,.2);
+  }
+  .camps-photos img:first-child{transform:translateY(20px)}
+
+  /* Team */
+  .team-hero{
+    display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;margin-bottom:70px;
+  }
+  .team-hero img{
+    border-radius:var(--radius-lg);object-fit:cover;width:100%;aspect-ratio:4/3;
+    box-shadow:var(--shadow-lg);
+  }
+  .team-intro p{font-size:17px}
+  .coaches{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+  .coach-card{
+    background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);
+    padding:36px;position:relative;overflow:hidden;
+    transition:transform .25s ease,box-shadow .25s ease;
+  }
+  .coach-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+  .coach-card::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:6px;
+    background:linear-gradient(90deg,var(--blue) 0%,var(--red) 100%);
+  }
+  .coach-name{font-family:'Archivo',sans-serif;font-weight:800;font-size:24px;margin-bottom:4px;color:var(--ink)}
+  .coach-role{color:var(--red);font-weight:700;font-size:14px;letter-spacing:.02em;margin-bottom:18px;display:block}
+  .coach-card p{font-size:15px;color:var(--ink-2)}
+
+  /* Contact */
+  .contact{
+    background:
+      radial-gradient(800px 500px at 20% 20%, rgba(29,64,168,.08), transparent 60%),
+      linear-gradient(180deg,#fff 0%, var(--cream) 100%);
+    padding:120px 0;text-align:center;
+  }
+  .contact h2{font-size:clamp(34px,4.5vw,56px);margin-bottom:24px}
+  .contact p{font-size:18px;max-width:600px;margin:0 auto 32px}
+  .contact-card{
+    max-width:560px;margin:40px auto 0;
+    background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);
+    padding:40px;box-shadow:var(--shadow-md);
+  }
+  .contact-card a.link{
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:22px;color:var(--blue);
+    display:inline-block;margin:8px 0 22px;
+  }
+
+  /* Footer */
+  footer{
+    background:var(--ink);color:#cbd5e1;padding:50px 0 30px;
+  }
+  .footer-inner{
+    display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;align-items:center;
+  }
+  .footer-inner img{height:42px;filter:brightness(0) invert(1);opacity:.95}
+  .footer-inner p{margin:0;color:#94a3b8;font-size:14px}
+  .footer-links{display:flex;gap:22px;flex-wrap:wrap}
+  .footer-links a{color:#cbd5e1;font-size:14px;font-weight:500}
+  .footer-links a:hover{color:#fff}
+
+  /* Reveal */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:960px){
+    .nav-links{display:none}
+    .menu-toggle{display:block}
+    .hero{padding:60px 0 80px}
+    .hero-grid{grid-template-columns:1fr;gap:50px}
+    .hero-lead{font-size:17px}
+    .hero-stats{max-width:100%}
+    .hero-badge{left:20px;bottom:-20px}
+    .hero-photo{transform:none}
+    section.block{padding:80px 0}
+    .why-grid,.mission-grid,.how-grid,.results-grid,.community-grid,.team-hero,.camps-grid{
+      grid-template-columns:1fr;gap:40px;
+    }
+    .values-grid{grid-template-columns:1fr 1fr;gap:18px}
+    .coaches{grid-template-columns:1fr;gap:20px}
+    .camps-banner{padding:40px 28px}
+    .camps-banner h3{font-size:28px}
+    .mission-quote{position:static;margin-top:-30px;margin-left:20px;margin-right:20px;max-width:none}
+    .mission-quote::before{display:none}
+    .how-visual img:first-child{margin-top:0}
+  }
+  @media (max-width:560px){
+    .values-grid{grid-template-columns:1fr}
+    .hero-stats{grid-template-columns:1fr 1fr}
+    .stat:last-child{grid-column:span 2}
+    .nav-inner{padding:12px 20px}
+    .brand img{height:36px}
+    .contact-card{padding:30px 22px}
+    .skills-list{grid-template-columns:1fr}
+    .camps-photos img:first-child{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#" class="brand" aria-label="GEMOTION Academy">
+      <img src="gemotion%20logo.png" alt="GEMOTION Academy — Športová škola Miloša a Inga" />
+    </a>
+    <nav class="nav-links">
+      <a href="#preco">Prečo</a>
+      <a href="#hodnoty">Hodnoty</a>
+      <a href="#misia">Misia</a>
+      <a href="#ako-funguje">Ako funguje</a>
+      <a href="#komunita">Komunita</a>
+      <a href="#tim">Tím</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#kontakt" class="btn btn-primary">Kontaktuj nás</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text reveal">
+      <span class="eyebrow">Športová škola Miloša a Inga</span>
+      <h1><span class="accent-blue">Pohyb, ktorý dáva zmysel.</span> <span class="accent-red">Začiatok, ktorý rozhoduje.</span></h1>
+      <p class="hero-lead">GEMOTION Academy je systematický program všeobecnej športovej prípravy pre deti vo veku 6 až 11 rokov v regióne Rožňava. Pevné základy, všestrannosť a správne vedenie.</p>
+      <div class="hero-ctas">
+        <a href="#kontakt" class="btn btn-primary">Prihlás svoje dieťa</a>
+        <a href="#preco" class="btn btn-ghost">Zisti viac</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">6–11</div>
+          <div class="stat-label">rokov vek detí</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num red">2×</div>
+          <div class="stat-label">týždenne tréning</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">12</div>
+          <div class="stat-label">detí v skupine</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="hero-blob-1"></div>
+      <div class="hero-blob-2"></div>
+      <video class="hero-photo" src="WhatsApp%20Video%202026-04-15%20at%2022.00.12.mp4" autoplay muted loop playsinline poster="WhatsApp%20Image%202026-04-15%20at%2021.03.51.jpeg" aria-label="Deti na tréningu GEMOTION Academy"></video>
+      <div class="hero-badge">
+        <img src="gemotion%20icona.png" alt="GEMOTION" />
+        <div>
+          <strong>TJ Geológ Rožňava</strong>
+          <span>Pod záštitou klubu</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY ============ -->
+<section id="preco" class="block">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-text reveal">
+        <span class="eyebrow">Prečo vznikol projekt</span>
+        <h2>Prečo vznikol projekt GEMOTION ACADEMY?</h2>
+        <span class="kicker">Každé dieťa má potenciál. Nie každé dostane správny začiatok.</span>
+        <p style="margin-top:24px">GEMOTION Academy vznikla z presvedčenia, že šport by nemal začínať skorou špecializáciou, ale pevnými základmi, všestrannosťou a správnym vedením.</p>
+        <p>Moderné poznatky zo športová veda a dlhodobé výskumy (napríklad model Long-Term Athlete Development) ukazujú, že deti, ktoré sa v ranom veku venujú rôznorodému pohybu, dosahujú v neskoršom veku lepšie výsledky – a to aj na profesionálnej úrovni. Všestranný pohybový rozvoj totiž vytvára pevný základ pre výkon, znižuje riziko zranení a umožňuje športovcovi naplno rozvinúť svoj potenciál.</p>
+        <p>V regióne Rožňava vyrástlo množstvo talentovaných športovcov. Napriek tomu často chýba systematický priestor, kde deti získajú to najdôležitejšie – kvalitný pohybový základ pre akýkoľvek šport.</p>
+        <p>GEMOTION Academy preto prináša koncept, ktorý prepája skúsenosti z vrcholového športu, odborné poznatky a prax z práce s mládežou. Naším cieľom je dať deťom to, čo rozhoduje o ich budúcnosti – správny začiatok.</p>
+      </div>
+      <div class="reveal">
+        <img src="WhatsApp%20Image%202026-04-15%20at%2021.11.47.jpeg" alt="Deti na atletickom tréningu v telocvični" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VALUES ============ -->
+<section id="hodnoty" class="block alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow red">Naše hodnoty</span>
+      <h2>Aké sú naše hodnoty?</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-num">01</div>
+        <h3>Všestrannosť</h3>
+        <p>Rozvíjame deti komplexne – pohybovo, fyzicky aj mentálne. Budujeme základ pre všetky športy.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-num">02</div>
+        <h3>Základy</h3>
+        <p>Dbáme na správnu techniku, pohybové návyky a zdravý vývoj. Kvalitný základ je kľúč k dlhodobému úspechu.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-num">03</div>
+        <h3>Dostupnosť</h3>
+        <p>Chceme, aby každé dieťa malo možnosť športovať. Vytvárame prostredie otvorené pre všetkých.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-num">04</div>
+        <h3>Radosť z pohybu</h3>
+        <p>Budujeme pozitívny vzťah k športu. Chceme, aby deti mali z pohybu radosť a prirodzene sa k nemu vracali.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-num">05</div>
+        <h3>Odbornosť</h3>
+        <p>Tréningy sú vedené kvalifikovanými trénermi a postavené na moderných poznatkoch športová veda.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-num">06</div>
+        <h3>Dlhodobosť</h3>
+        <p>Nejde nám o krátkodobý výkon, ale o dlhodobý rozvoj. Vedieme deti k tomu, aby šport zostal súčasťou ich života aj v dospelosti.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MISSION ============ -->
+<section id="misia" class="block">
+  <div class="container">
+    <div class="mission-grid">
+      <div class="mission-visual reveal">
+        <img src="WhatsApp%20Image%202026-04-15%20at%2020.41.58.jpeg" alt="Deti cvičia rôzne pohybové aktivity v telocvični" />
+        <div class="mission-quote">„GEMOTION nie je len tréning. Je to začiatok športovej cesty.“</div>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Naša misia</span>
+        <h2>Aká je naša misia?</h2>
+        <span class="kicker">Pohyb, ktorý dáva zmysel. Začiatok, ktorý rozhoduje.</span>
+        <p style="margin-top:24px">Našou misiou je vytvoriť systematický a dostupný priestor, kde deti získajú pevný pohybový základ pre akýkoľvek šport aj pre zdravý život.</p>
+        <p>Chceme pritiahnuť k športu čo najviac detí a dať im príležitosť hýbať sa bez ohľadu na ich aktuálnu úroveň či skúsenosti. Veríme, že každé dieťa by malo mať možnosť športovať, rozvíjať sa a objaviť radosť z pohybu.</p>
+        <p>Zameriavame sa na všestranný rozvoj, budovanie správnych pohybových návykov a pozitívny vzťah k športu. Naším cieľom nie je skorá špecializácia, ale dlhodobý rozvoj – chceme, aby deti pokračovali v športe aj v budúcnosti, či už na výkonnostnej úrovni alebo rekreačne, a aby sa pohyb stal prirodzenou súčasťou ich života.</p>
+        <p>Zároveň je našou víziou vytvoriť v regióne Rožňava funkčný a dlhodobo udržateľný systém športovej prípravy detí, ktorý bude prepájať školy, športové kluby a komunitu. Chceme byť prvým krokom na športovej ceste detí – miestom, kde sa budujú základy, objavuje talent a formuje pozitívny vzťah k pohybu.</p>
+        <p>Našou ambíciou je prispieť k tomu, aby z regiónu vyrastali nielen kvalitní športovci, ale predovšetkým zdraví, aktívni a sebavedomí ľudia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="ako-funguje" class="block alt">
+  <div class="container">
+    <div class="how-grid">
+      <div class="reveal">
+        <span class="eyebrow red">Ako to u nás funguje</span>
+        <h2>Ako to u nás funguje?</h2>
+        <span class="kicker">Skupina max. 12 detí – vek od 6 do 11 rokov – tréningy 2x týždenne</span>
+        <p style="margin-top:24px">GEMOTION Academy je systematický program všeobecnej športovej prípravy určený pre deti vo veku 6 až 11 rokov (prvý stupeň základných škôl) v regióne Rožňava a jeho okolí.</p>
+        <p>Program je navrhnutý tak, aby deťom poskytol pevný pohybový základ prostredníctvom pravidelného, odborného a zábavného tréningu.</p>
+        <p>Tréningy prebiehajú 2x týždenne priamo na základných školách, čo umožňuje jednoduchú dostupnosť pre deti aj rodičov. Vedú ich vyškolení a profesionálni tréneri z regiónu, ktorí pracujú podľa jednotnej metodiky.</p>
+        <p><strong style="color:var(--ink)">Počas tréningov sa zameriavame na rozvoj kľúčových pohybových schopností:</strong></p>
+        <div class="skills-list">
+          <div class="skill-pill"><span class="dot"></span>koordinácie</div>
+          <div class="skill-pill"><span class="dot"></span>rýchlosti</div>
+          <div class="skill-pill"><span class="dot"></span>sily primeranej veku</div>
+          <div class="skill-pill"><span class="dot"></span>obratnosti</div>
+          <div class="skill-pill" style="grid-column:span 2"><span class="dot"></span>a prirodzeného pohybu formou hier</div>
+        </div>
+        <p style="margin-top:28px">Pretože dôležitou súčasťou programu je individuálny prístup ku každému dieťaťu, počet v jednej skupine je obmedzený na 12 detí. Vďaka skúsenostiam Miloša Kočtúcha a Ingemara Pétera vieme rozpoznať pohybové predispozície detí a pomôcť rodičom lepšie pochopiť, pre ktorý šport má ich dieťa najlepšie predpoklady.</p>
+        <p>GEMOTION Academy tak predstavuje prirodzený most medzi prvým kontaktom so športom a výberom konkrétneho športového smeru – bezpečný, odborný a dlhodobo udržateľný začiatok športovej cesty.</p>
+      </div>
+      <div class="how-visual reveal">
+        <img src="WhatsApp%20Image%202026-04-15%20at%2020.42.48.jpeg" alt="Dievča skáče cez švihadlo počas tréningu" />
+        <img src="WhatsApp%20Image%202026-04-15%20at%2021.04.28.jpeg" alt="Deti cvičia s trénermi a kužeľmi v telocvični" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESULTS ============ -->
+<section id="vysledky" class="block">
+  <div class="container">
+    <div class="results-grid">
+      <div class="reveal">
+        <img src="WhatsApp%20Image%202026-04-15%20at%2021.07.39.jpeg" alt="Tréneri a deti na športovom dni v telocvični TJ Geológ" />
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Ako sledujeme výsledky</span>
+        <h2>Ako sledujeme výsledky?</h2>
+        <span class="kicker">Súťažíme spolu. Rastieme spolu. Patríme k sebe.</span>
+        <p style="margin-top:24px">Spoločné športové dni sú dôležitou súčasťou programu GEMOTION Academy a pravidelne sa konajú približne raz za dva mesiace. Na jednom mieste sa stretávajú všetky skupiny detí, ktoré sú zapojené do našej športovej školy, čím vzniká jedinečný priestor pre spoločný pohyb, zážitok aj motiváciu.</p>
+        <p>Počas týchto dní deti absolvujú jednoduché pohybové testy a aktivity, vďaka ktorým si môžu sledovať svoj pokrok v čase. Výsledky zaznamenávame citlivo a s dôrazom na individuálny rozvoj – cieľom nie je porovnávanie, ale radosť z vlastného zlepšenia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMMUNITY ============ -->
+<section id="komunita" class="block alt">
+  <div class="container">
+    <div class="community-grid">
+      <div class="reveal">
+        <img class="community-main" src="WhatsApp%20Image%202026-04-15%20at%2020.53.02.jpeg" alt="Deti spoločne ťahajú lano na športovom dni GEMOTION Academy" />
+      </div>
+      <div class="reveal">
+        <span class="eyebrow red">Komunita</span>
+        <h2>Ako a prečo budujeme komunitu?</h2>
+        <span class="kicker">Silná komunita nevzniká náhodou. Buduje sa od detstva.</span>
+        <p style="margin-top:24px"><strong style="color:var(--ink)">Spoločné športové dni</strong> majú omnoho hlbší význam než meranie výkonu malých športovcov.</p>
+        <p>Budujeme na nich komunitu detí, ktoré spája pohyb. Deti si uvedomujú, že sú súčasťou väčšieho celku – že aj keď medzi sebou môžu zdravo súťažiť, nie sú konkurentmi, ale partnermi. Učia sa navzájom podporovať, rešpektovať a zdieľať radosť zo športu.</p>
+        <p>Tento prístup má zároveň výrazný sociologický rozmer. Moderné poznatky dlhodobo poukazujú na to, že silná komunita a pocit spolupatričnosti patria medzi kľúčové faktory, ktoré ovplyvňujú rozhodovanie mladých ľudí o tom, či v regióne zostanú, alebo ho opustia.</p>
+        <p>Ak deti už od malička zažívajú prostredie, kde sa cítia prijaté, podporované a kde majú vzťahy, ktoré dávajú zmysel, vytvárajú si prirodzený vzťah k miestu, v ktorom vyrastajú. Takéto väzby výrazne zvyšujú pravdepodobnosť, že sa k nemu v budúcnosti vrátia alebo v ňom zostanú – nielen kvôli športu, ale kvôli ľuďom a komunite, ktorej sú súčasťou.</p>
+      </div>
+    </div>
+
+    <div class="camps-banner reveal">
+      <div class="camps-grid">
+        <div>
+          <span class="eyebrow" style="background:rgba(255,255,255,.15);color:#fff">Letné kempy</span>
+          <h3 style="margin-top:16px">Letné športové kempy sú dôležitým doplnkom programu.</h3>
+          <p>Organizujeme ich pravidelne v mesiacoch júl a august. Tieto kempy vytvárajú intenzívnejší priestor pre pohyb, zážitok a spoločné trávenie času. Okrem športového rozvoja majú výrazný <strong style="color:#fff">komunitný rozmer</strong> – deti trávia spolu viac času, budujú si pevnejšie vzťahy a prehlbujú pocit spolupatričnosti.</p>
+          <p>Práve v takomto prostredí vznikajú prirodzené priateľstvá, dôvera a pozitívne zážitky, ktoré majú dlhodobý vplyv nielen na vzťah detí k športu, ale aj k ľuďom a prostrediu, v ktorom vyrastajú.</p>
+          <p>Letné kempy tak nadväzujú na celoročný program a pomáhajú upevňovať komunitu, ktorá je jedným zo základných pilierov celého projektu.</p>
+        </div>
+        <div class="camps-photos">
+          <img src="WhatsApp%20Image%202026-04-15%20at%2020.46.03.jpeg" alt="Deti hrajú futbal v parku počas letného kempu" />
+          <img src="WhatsApp%20Image%202026-04-15%20at%2020.53.28.jpeg" alt="Deti na tréningu v parku s trénerom" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section id="tim" class="block">
+  <div class="container">
+    <div class="team-hero">
+      <div class="reveal">
+        <img src="WhatsApp%20Image%202026-04-15%20at%2020.56.09.jpeg" alt="Tím trénerov GEMOTION Academy — Športová škola Miloša a Inga" />
+      </div>
+      <div class="team-intro reveal">
+        <span class="eyebrow">Náš tím</span>
+        <h2>Kto stojí za GemMARK?</h2>
+        <p style="margin-top:24px">Za projektom GEMOTION Academy – Športová škola Miloša a Inga stojí tím odborníkov a trénerov, ktorých spája spoločný cieľ – vytvoriť kvalitné športové prostredie pre deti v regióne.</p>
+        <p>Projekt vzniká pod záštitou najúspešnejšieho športového klubu v histórii mesta TJ Geológ Rožňava a spája skúsenosti z vrcholového športu, trénerstva aj práce s mládežou.</p>
+      </div>
+    </div>
+
+    <div class="coaches">
+      <article class="coach-card reveal">
+        <h3 class="coach-name">Ingemar Péter</h3>
+        <span class="coach-role">moderný prístup a medzinárodná skúsenosť</span>
+        <p>Ingo je extraligový hráč TJ Geológ Rožňava, kde pôsobí od roku 2020. Počas svojej kariéry prešiel všetkými mládežníckymi reprezentáciami Slovenska a reprezentoval krajinu na viacerých Majstrovstvách Európy v mládežníckych kategóriách aj do 21 rokov.</p>
+        <p>Od roku 2019 pôsobí ako tréner a sparing partner v Národné stolnotenisové centrum mládeže v Nitre, kde pracuje s elitnými mladými reprezentantmi Slovenska. Zároveň sa podieľa aj na fungovaní reprezentačného prostredia ako zastupujúci tréner mládeže.</p>
+        <p>Počas svojej kariéry získal skúsenosti aj v zahraničí – pôsobil vo Švédsku, Fínsku, Španielsku a Maďarsku. Absolvoval odborný tréningový pobyt na Shanghai University of Sport, kde mal možnosť sledovať najmodernejšie tréningové postupy v jednej z najúspešnejších športových krajín sveta.</p>
+        <p>Je držiteľom trénerskej licencie B a venuje sa aj kondičnej príprave športovcov. Aktívne sa vzdeláva v oblasti športovej prípravy a športovej psychológie. Je spoluzakladateľom projektu zameraného na rozvoj mladých talentov a organizovanie športových sústredení.</p>
+      </article>
+
+      <article class="coach-card reveal">
+        <h3 class="coach-name">Miloš Kočtúch</h3>
+        <span class="coach-role">overená metodika, systém a odborný prístup</span>
+        <p>Miloš je ikona športu v okrese Rožňava. Je absolventom Pedagogickej fakulty v Banskej Bystrici, kde vyštudoval telesnú výchovu so špecializáciou na atletiku a lyžovanie. Športu sa venuje dlhodobo na profesionálnej aj amatérskej úrovni.</p>
+        <p>Jeho práca je zameraná najmä na metodiku tréningu, rozvoj fyzickej kondície a pohybových schopností. Vo svojej praxi prepája fyzickú prípravu s psychologickými aspektmi športu, čím vytvára komplexný prístup k rozvoju jednotlivca.</p>
+        <p>Dlhodobo pôsobí ako tréner atletiky, lyžovania a kondičnej prípravy pre deti aj dospelých. Vďaka svojmu medziodborovému presahu vníma šport nielen ako výkon, ale aj ako dôležitý nástroj formovania osobnosti a zdravého životného štýlu.</p>
+      </article>
+
+      <article class="coach-card reveal">
+        <h3 class="coach-name">Andrej Ružik</h3>
+        <span class="coach-role">systematická práca s mládežou a rozvoj v regióne</span>
+        <p>Andrej je jednou z kľúčových osobností jeho rozvoja stolného tenisu v regióne. Od roku 2007 pôsobí ako tréner extraligového klubu TJ Geológ Rožňava.</p>
+        <p>Vyštudoval Technická univerzita v Košiciach a následne aj trénerstvo na Fakulte telesnej výchovy a športu Univerzity Komenského v Bratislave, kde získal aj trénerskú licenciu „A“.</p>
+        <p>Dlhodobo sa venuje práci s mládežou a jeho cieľom je priviesť k športu čo najviac detí. Je organizátorom Školskej stolnotenisovej ligy pre žiakov základných škôl, ktorá dáva deťom možnosť objaviť radosť z pohybu a súťaženia. Vďaka tejto dobrovoľnej práci pozná veľmi dobre športové zázemie v regióne a svoje skúsenosti môže vložiť do GEMOTION Academy.</p>
+        <p>Je pevne spätý s regiónom Rožňavy a verí, že šport zohráva kľúčovú úlohu pri formovaní jednotlivca aj celej spoločnosti.</p>
+      </article>
+
+      <article class="coach-card reveal">
+        <h3 class="coach-name">Gregor Gallo</h3>
+        <span class="coach-role">kontinuita, skúsenosti a silné prepojenie na komunitu</span>
+        <p>Gregor Gallo je symbolom kontinuity športu v regióne a dlhoročný extraligový hráč TJ Geológ Rožňava. Stolnému tenisu sa venuje prakticky celý život a s rožňavským klubom je spätý viac ako 30 rokov, počas ktorých nikdy nenastúpil za iný klub. Vďaka svojej histórii, skúsenostiam a rešpektu, ktorý si vybudoval, prináša do tímu stabilitu, dôveryhodnosť a pevné ukotvenie v miestnom športovom prostredí.</p>
+        <p>Je živou ukážkou toho, že keď niekto získa pevné komunitné väzby už v detstve, neexistuje sila, ktorá by ho z Rožňavy dokázala odtiahnuť.</p>
+        <p>Počas svojej športovej kariéry dosiahol viaceré úspechy na národnej úrovni, vrátane medailových umiestnení na majstrovstvách Slovenska v mládežníckych kategóriách a účasti na študentských majstrovstvách sveta. Dlhodobo patrí medzi stabilných hráčov extraligy a bol súčasťou tímu, ktorý získal titul majstra Slovenska.</p>
+        <p>Okrem výkonnostného športu je Gregor aktívny aj v rozvoji športového a komunitného života v regióne. Jeho dlhoročná oddanosť športu, klubu a mestu predstavuje silný základ pre budovanie kvalitného športového prostredia pre mladú generáciu.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="kontakt" class="contact">
+  <div class="container">
+    <span class="eyebrow red reveal">Kontakt</span>
+    <h2 class="reveal">Ako sa s nami spojíš?</h2>
+    <p class="reveal">Ozvi sa nám e-mailom – radi ti poskytneme všetky informácie o tréningoch, termínoch a prihlasovaní.</p>
+    <div class="contact-card reveal">
+      <img src="gemotion%20icona.png" alt="" style="width:64px;margin:0 auto 10px" />
+      <div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:4px">E-mail</div>
+      <a href="mailto:info@gemotion.sk" class="link">info@gemotion.sk</a>
+      <div>
+        <a href="mailto:info@gemotion.sk" class="btn btn-primary">Napíš nám</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container footer-inner">
+    <img src="gemotion%20logo.png" alt="GEMOTION Academy" />
+    <div class="footer-links">
+      <a href="#preco">Prečo</a>
+      <a href="#hodnoty">Hodnoty</a>
+      <a href="#misia">Misia</a>
+      <a href="#ako-funguje">Ako funguje</a>
+      <a href="#komunita">Komunita</a>
+      <a href="#tim">Tím</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <p>© <span id="y"></span> GEMOTION Academy · Športová škola Miloša a Inga · TJ Geológ Rožňava</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
